@@ -1,0 +1,26 @@
+拼音分词器可以将中文分成对应的全拼，全拼首字母等。
+
+一.安装拼音分词器
+1.关闭es服务
+
+2.使用rz命令将拼音分词器上传至虚拟机
+    注：拼音分词器的版本要和es版本保持一致。
+
+3.解压pinyin分词器到elasticsearch的plugins目录下
+    unzip elasticsearch-analysis-pinyin-8.10.4 -d /usr/local/elasticsearch1/plugins/analysis-pinyin
+
+4.启动ES服务
+    su es
+
+    #进入ES安装文件夹：
+    cd /usr/local/elasticsearch1/bin/
+
+    #启动ES服务：
+    ./elasticsearch
+
+二.测试分词效果
+GET /_analyze
+{
+    "text":测试语句, 
+    "analyzer":"pinyin"
+}

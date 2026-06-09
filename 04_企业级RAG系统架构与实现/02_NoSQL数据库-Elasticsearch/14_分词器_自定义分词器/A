@@ -1,0 +1,46 @@
+真实开发中我们往往需要对一段内容既进行文字分词，又进行拼音分词，此时我们需要自定义ik+pinyin分词器。
+
+一.创建自定义分词器
+1.在创建索引时自定义分词器
+PUT /索引名
+{
+  "settings" : {
+    "analysis" : {
+      "analyzer" : {
+        "ik_pinyin" : { //自定义分词器名
+          "tokenizer":"ik_max_word", // 基本分词器
+          "filter":"pinyin_filter" // 配置分词器过滤
+         }
+       },
+      "filter" : { // 分词器过滤时配置另一个分词器，相当于同时使用两个分词器
+        "pinyin_filter" : { 
+          "type" : "pinyin", // 另一个分词器
+          // 拼音分词器的配置
+          "keep_separate_first_letter" : false, // 是否分词每个字的首字母
+          "keep_full_pinyin" : true, // 是否分词全拼
+          "keep_original" : true, // 是否保留原始输入
+          "remove_duplicated_term" : true // 是否删除重复项
+         }
+       }
+     }
+   },
+  "mappings":{
+    "properties":{
+      "域名1":{
+        "type":域的类型,
+        "store":是否单独存储,
+        "index":是否创建索引,
+             "analyzer":分词器
+       },
+      "域名2":{ 
+        ...
+       }
+     }
+   }
+}
+二.测试自定义分词器
+GET /索引/_analyze
+{
+ "text": "你好百战程序员",
+ "analyzer": "ik_pinyin"
+}

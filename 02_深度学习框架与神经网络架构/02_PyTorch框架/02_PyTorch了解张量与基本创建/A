@@ -1,0 +1,27 @@
+1.什么是张量
+张量是PyTorch中的基本数据结构，可以看作是多维数组。从维度上理解：
+    0维张量：标量（单个数字）
+    1维张量：向量
+    2维张量：矩阵
+    3维及以上：高维张量
+
+2.张量的创建
+torch.tensor 根据数据创建张量
+
+torch.Tensor 根据形状创建张量，或根据数据创建张量
+    torch.FloatTensor : :创建类型为torch.float32 (默认浮点类型)
+    torch.DoubleTensor :创建类型为torch.float64
+    torch.HalfTensor :创建类型为torch.float16
+    torch.IntTensor :创建类型为torch.int32
+    torch.LongTensor :创建类型为torch.int64(默认整型)
+    torch.ShortTensor :创建类型为torch.int16
+    torch.ByteTensor :创建类型为torch.uint8
+    torch.BoolTensor :创建类型为torch.bool
+提示:
+默认选择：
+    对于大多数深度学习任务，使用默认的torch.float32即可
+    对于整数索引，使用默认的torch.int64
+特殊场景：
+    需要高精度计算：使用torch.float64
+    需要节省内存：考虑使用torch.float16
+    布尔型掩码：使用torch.bool

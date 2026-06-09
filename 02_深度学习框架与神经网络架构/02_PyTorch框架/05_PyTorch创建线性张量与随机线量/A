@@ -1,0 +1,16 @@
+张量创建方法
+    torch.arange(start,end,step)： 生成一个指定范围的等间隔序列。左闭右开
+
+    torch.linspace(start,end,num)： 生成一个指定范围的等间隔序列。左闭右闭
+
+    torch.rand(size, device='cpu'):生成一个服从 均匀分布 的随机数张量, 生成的随机数范围在 [0, 1) 之间
+
+    torch.randn(size, device='cpu') 生成一个服从标准正态分布 (均值为 0，标准差为 1) 的随机数张量
+
+    torch.random.initial_seed()： 返回 PyTorch 随机数生成器的初始种子（一般为 0 或者随机数字）
+
+    torch.random.manual_seed()： 手动设置 PyTorch 随机数生成器的种子
+
+    注意:
+        CPU 是串行执行的，所以随机数生成器状态更新是按照顺序的，结果就一致。
+        CUDA 由于并行运算，就算设置了相同的 seed，因为每个线程的随机数生成器更新顺序不确定，所以结果就不一致。

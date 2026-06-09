@@ -1,0 +1,38 @@
+学习目标
+    理解提示词模板在Agent开发中的核心作用
+    了解根据任务类型选择合适模板策略
+
+一.介绍
+Prompt Template 主要用于构建和管理与大语言模型（LLM）交互的提示词（Prompt）
+
+二.模板的核心价值
+    标准化：确保提示结构一致性
+    参数化：动态注入变量，提高复用性
+    可维护：集中管理提示逻辑
+
+三.提示模板分类
+1. PromptTemplate
+用途: 最基础的模板，用于将变量填入一个字符串模板中，生成给 LLM 的输入
+
+2. ChatPromptTemplate
+用途: 专为聊天模型（如 ChatGPT、Claude、Qwen-Chat 等）设计，支持多轮对话结构，包含不同角色的消息（system / human / AI / generic）
+
+组成：
+    SystemMessagePromptTemplate：设定系统角色（如“你是一个翻译助手”）
+    HumanMessagePromptTemplate：用户输入
+    AIMessagePromptTemplate：AI 的历史回复（用于上下文）
+    ChatMessagePromptTemplate：通用角色消息（可自定义角色名）
+
+四.FewShotPromptTemplate (了解)
+用途: 通过提供少量示例（few-shot examples）来引导模型行为，常用于提升模型在特定任务上的表现
+
+通常包含：
+    一个 example_prompt（定义每个示例的格式）
+    一组示例数据
+    可选的 example_selector（动态选择相关示例）
+
+五.选择模板策略
+Agent类型	推荐模板	关键特性	适用场景
+任务型Agent	PromptTemplate	结构固定，参数明确	数据提取、格式转换
+对话型Agent	ChatPromptTemplate	多轮对话，角色扮演	客服、角色扮演聊天
+推理型Agent	FewShotPromptTemplate	示例驱动，类比推理	逻辑推理、代码生成

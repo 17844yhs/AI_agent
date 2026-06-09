@@ -1,0 +1,11 @@
+完成查询向量化与Top-K检索
+
+一.学习目标
+    将用户问题向量化
+    执行Top-K相似度检索并返回文档片段
+
+二.步骤流程
+    1) 将query生成Embedding
+    2) 调用向量库 query(top_k=K, where=metadata_filter)
+    3) 返回片段并打印相似度得分
+

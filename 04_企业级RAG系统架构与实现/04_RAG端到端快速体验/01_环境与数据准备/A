@@ -1,0 +1,22 @@
+一.学习目标
+    搭建Python虚拟环境
+    整理示例PDF/文本数据并放入预设目录
+    了解项目目录结构与基础配置
+
+二.步骤流程
+    1) 使用 uv 初始化项目并创建虚拟环境
+    3) 准备示例数据集，放入 data
+
+三.关键代码/命令
+# 1）全局安装 uv（如尚未安装）
+pip install uv
+​
+# 2）初始化项目（如需要）
+uv init rag-demo
+cd rag-demo
+​
+# 3）创建和使用虚拟环境
+uv venv
+.venv\Scripts\activate    # Windows
+# source .venv/bin/activate  # Linux/macOS
+

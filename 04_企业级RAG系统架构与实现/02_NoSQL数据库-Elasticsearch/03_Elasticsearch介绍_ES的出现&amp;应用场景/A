@@ -1,0 +1,5 @@
+多年前，一个刚结婚的名叫Shay的失业开发者，跟着妻子去了伦敦，他的妻子在那里学习厨师。Shay使用全文检索工具——lucene，给他的妻子做一个食谱搜索引擎。
+
+但Lucene的操作非常复杂，且Lucene是一个单机软件，不支持联网访问。因此 Shay基于Lucene开发了开源项目 Elasticsearch。Elasticsearch本质是一个java语言开发的web项目，我们可以通过RESTful风格的接口访问该项目内部的Lucene，从而让全文搜索变得简单。
+
+从此以后，Elasticsearch成为了Github上最活跃的项目之一， Elastic公司围绕Elasticsearch提供商业服务，并开发新的特性。Elasticsearch将永远开源并对所有人可用。下·

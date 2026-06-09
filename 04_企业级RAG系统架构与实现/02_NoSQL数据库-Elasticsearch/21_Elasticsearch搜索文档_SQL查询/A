@@ -1,0 +1,7 @@
+在ES7之后，支持SQL语句查询文档：
+
+GET /_sql?format=txt
+{
+    "query": SQL语句
+}
+开源版本的ES并不支持通过Java操作SQL进行查询，如果需要操作 SQL查询，则需要氪金（购买白金版）

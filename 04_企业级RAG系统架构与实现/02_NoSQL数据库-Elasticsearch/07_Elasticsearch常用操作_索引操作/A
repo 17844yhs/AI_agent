@@ -1,0 +1,23 @@
+Elasticsearch是使用RESTful风格的http请求访问操作的，请求参数和返回值都是Json格式的，我们可以使用kibana发送http请求操作ES。
+
+一.创建没有结构的索引
+路径：ip地址:端口号/索引名
+注：在kibana中所有的请求都会省略ip地址:端口号，之后的路径我们省略写ip地址:端口号
+
+请求方式：PUT
+
+二.为索引添加结构
+POST /索引名/_mapping
+{
+    "properties":{
+        "域名1":{
+            "type":域的类型,
+            "store":是否存储,
+            "index":是否创建索引,
+      "analyzer":分词器
+       },
+       "域名2":{ 
+            ...
+        }
+    }
+}

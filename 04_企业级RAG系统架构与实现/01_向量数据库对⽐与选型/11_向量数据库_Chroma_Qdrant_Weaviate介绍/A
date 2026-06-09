@@ -1,0 +1,63 @@
+一.什么是轻量级向量数据库
+轻量级向量数据库是指部署简单、资源消耗低、适合中小型项目的向量数据库解决方案。主要包括Chroma、Qdrant、Weaviate等。
+
+Chroma：
+    Python优先，API简洁
+    内置Embedding模型
+    适合Python开发者
+
+Qdrant：
+    Rust实现，性能优秀
+    支持过滤和Payload
+    适合对性能要求高的场景
+
+Weaviate：
+    图数据库 + 向量检索
+    支持复杂关系查询
+    适合知识图谱场景
+
+三.为什么选择轻量级向量数据库
+适用场景：
+    中小型项目：数据量百万级以内
+    快速开发：需要快速集成
+    资源有限：服务器资源有限
+    特定需求：需要特定功能（如图谱、高性能）
+
+优势：
+    部署简单，上手快
+    资源消耗低
+    功能专注，性能优秀
+    开源免费
+
+局限性：
+    扩展性有限
+    企业级功能较少
+    社区支持相对较小
+
+四.谁适合使用轻量级向量数据库
+    个人开发者：个人项目、学习研究
+    小团队：资源有限，快速迭代
+    特定场景：需要特定功能（如图谱、高性能）
+    原型验证：快速验证想法
+
+部署说明：
+Chroma：pip install chromadb，可直接使用，支持持久化
+
+Qdrant：docker run -p 6333:6333 qdrant/qdrant，然后pip install qdrant-client
+
+Weaviate：使用docker-compose部署，然后pip install weaviate-client
+
+五.轻量级向量数据库性能对比
+性能对比：
+
+数据库	查询速度	        内存占用	        易用性	         特色功能
+Chroma	⭐⭐⭐	            ⭐⭐⭐⭐	⭐⭐⭐⭐⭐	    内置Embedding
+Qdrant	⭐⭐⭐⭐⭐	     ⭐⭐⭐	 ⭐⭐⭐⭐	        高性能、过滤
+Weaviate	⭐⭐⭐⭐	   ⭐⭐⭐	     ⭐⭐⭐	         图数据库
+
+选择建议：
+    Python项目：选择Chroma
+
+    性能优先：选择Qdrant
+
+    图谱场景：选择Weaviate
