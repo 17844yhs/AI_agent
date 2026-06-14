@@ -20,8 +20,6 @@ __pycache__/
 *.tmp
 *.temp
 
-# 大文件 - 可根据需要取消注释
-# *.pdf
-# *.png
-# *.jpg
-# *.jpeg
+# 大文件 - 安装包等二进制文件不上传 Git
+*.tar.gz
+*.zip

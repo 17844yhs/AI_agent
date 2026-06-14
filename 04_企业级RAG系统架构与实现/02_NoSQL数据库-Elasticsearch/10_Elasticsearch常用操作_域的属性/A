@@ -1,0 +1,36 @@
+一.index
+该域是否创建索引。只有值设置为true，才能根据该域的关键词查询文档。
+
+// 根据关键词查询文档
+GET /索引名/_search
+{
+    "query":{
+    "term":{ 
+            搜索字段: 关键字
+        } 
+   }
+}
+
+二.type
+域的类型
+    核心类型	具体类型
+    字符串类型	text
+    整数类型	long, integer, short, byte
+    浮点类型	double, float
+    日期类型	date
+    布尔类型	boolean
+    数组类型	array
+    对象类型	object
+    不分词的字符串	keyword
+
+3.store
+是否单独存储。如果设置为true，则该域能够单独查询。
+
+// 单独查询某个域：
+GET /索引名/_search
+{
+ "stored_fields": ["域名"]
+}
+
+# _source 就像一本百科全书。想查一个字，你得先翻开厚厚的书，再在目录里找，最后定位到那一页。
+# store 就像便利贴。你把那个字写在便利贴上，贴在封面。想看时，一眼就能看到。

@@ -1,0 +1,44 @@
+Kibana是一款开源的数据分析和可视化平台，设计用于和Elasticsearch协作。我们可以使用Kibana对Elasticsearch索引中的数据进行搜索、查看、交互操作。
+
+1.使用rz工具将Kibana压缩文件上传到Linux虚拟机
+
+2.解压
+  tar -zxvf kibana-8.10.4-linux-x86_64.tar.gz -C /usr/local/
+
+3.修改配置
+  # 进入Kibana解压路径
+  cd /usr/local/kibana-8.10.4/config
+
+  # 修改配置文件
+  vim kibana.yml
+
+  # 加入以下内容
+  # 主机IP，服务名
+  server.host: "虚拟机IP"
+  server.name: "kibana"
+
+4.启动：
+kibana不能以root用户运行，我们给es用户设置kibana目录的权限，并使用es用户运行kibana
+  # 给es用户设置kibana目录权限
+  chown -R es:es /usr/local/kibana-8.10.4/
+
+  # 切换为es用户
+  su es
+
+  # 启动kibana
+  cd /usr/local/kibana-8.10.4/bin/
+  ./kibana
+
+5.访问kibana：http://虚拟机IP:5601
+首次访问Kibana管理台会提示输入ES生成的token秘钥，可以在ES首次启动日志中找。
+
+如果token已失效或不正确，你也可以重新生成token。
+  # 进入es安装目录
+  cd /usr/local/elasticsearch1/bin
+
+  # 重新生成kibana的token
+  .elasticsearch-create-enrollment-token --scope kibana
+
+6.紧接着输入登录账号 elastic，密码也同样是从ES首次启动日志中找。
+
+7.点击Management => Index Management可以查看es索引信息。

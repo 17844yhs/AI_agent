@@ -1,0 +1,11 @@
+学习目标
+  理解 声明式模型 在大语言模型输出控制中的核心思想
+  使用 Pydantic 模型 + with_structured_output() 构建可靠、类型安全的 LLM 应用
+
+一.Pydantic + Structured Output
+从LangChain v0.3开始，其内部已完全支持并升级到Pydantic v2。这意味着框架原生就能高效处理Pydantic模型
+
+AI应用要落地，首要挑战是保证输出结果稳定可靠。手动解析字符串容易出错，而Pydantic模型提供的强类型验证，能极大提高数据输出的准确性和一致性
+
+LangChain提供了的API（如模型的 .with_structured_output() 方法），让绑定Pydantic模型变得异常简单，代码更清晰
+

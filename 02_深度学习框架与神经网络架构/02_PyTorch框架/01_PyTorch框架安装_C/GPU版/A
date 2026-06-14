@@ -1,0 +1,39 @@
+PyTorch 是一个开源的机器学习库，主要用于进行计算机视觉（CV）、自然语言处理（NLP）、语音识别等领域的研究和开发。
+
+PyTorch由 Facebook 的人工智能研究团队开发，并在机器学习和深度学习社区中广泛使用。
+
+PyTorch 以其灵活性和易用性而闻名，特别适合于深度学习研究和开发
+
+官网
+https://pytorch.org/
+
+安装
+1.torch：
+    torch 是 PyTorch 的核心库，提供了张量（Tensor）操作、自动微分（autograd）系统、优化器（optimizers）等基础功能。
+    它允许用户定义计算图，并通过反向传播自动计算梯度，这是深度学习中的核心功能。
+    torch 库提供了大量的数学运算和张量操作，是构建深度学习模型的基础。
+
+2.torchvision：
+    torchvision 是 PyTorch 的一个扩展库，专门用于处理图像数据。
+    它提供了许多预训练的模型（如 ResNet、VGG 等），可以直接用于图像分类、目标检测等任务。
+    torchvision 还包含了图像数据的预处理和增强工具，如数据加载器（DataLoader）、转换（transforms）等，这些工具可以帮助用户轻松地加载和处理图像数据集。
+
+3.torchaudio：
+    torchaudio 是 PyTorch 的音频处理库，用于处理音频数据。
+    它提供了音频数据的加载、保存、转换和处理功能，支持多种音频格式。
+    torchaudio 还提供了音频数据的预处理和增强工具，以及一些音频相关的深度学习模型和层。
+    这个库对于音频分析、语音识别、音乐信息检索等任务非常有用。
+注意:
+GPU运算速度相对于CPU版本要速度快一些。但推荐有NVIDIA显卡的安装
+
+https://developer.nvidia.com/cuda-gpus
+    CUDA : CUDA是显卡厂商NVIDIA推出的运算平台。CUDA™是一种由NVIDIA推出的通用并行计算架构，是一种并行计算平台和编程模型，该架构使GPU能够解决复杂的计算问题。CUDA英文全称是Compute Unified Device Architecture
+    cuDNN:cuDNN的全称为NVIDIA CUDA® Deep Neural Network library，是NVIDIA专门针对深度神经网络中的基础操作而设计基于GPU的加速库。CUDA这个平台一开始并没有安装cuDNN库，当开发者们需要用到深度学习GPU加速时才安装cuDNN库，工作速度相较CPU快很多
+
+
+import torch
+
+# 当前安装的 PyTorch 库的版本
+print(torch.__version__)
+# 检查 CUDA 是否可用，即系统有 NVIDIA 的 GPU
+print(torch.cuda.is_available())

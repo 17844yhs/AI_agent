@@ -1,0 +1,64 @@
+一.准备工作
+1.准备一台搭载有CentOS7系统的虚拟机，使用XShell连接虚拟机
+
+2.关闭防火墙，方便访问ES
+    #关闭防火墙：
+    systemctl stop firewalld.service
+
+    #禁止防火墙自启动：
+    systemctl disable firewalld.service
+
+3.配置最大可创建文件数大小
+    #打开系统文件：
+    vim /etc/sysctl.conf
+
+    #添加以下配置：
+    vm.max_map_count=655360
+
+    #配置生效：
+    sysctl -p
+
+4.由于ES不能以root用户运行，我们需要创建一个非root用户，此处创建一个名为es的用户：
+    #创建用户：
+    useradd es
+
+二.安装服务
+1.使用rz命令将linux版的ES上传至虚拟机
+
+2.解压ES
+    #解压：
+    tar -zxvf elasticsearch-8.10.4-linux-x86_64.tar.gz
+
+    #重命名：
+    mv elasticsearch-8.10.4 elasticsearch1
+
+    #移动文件夹：
+    mv elasticsearch1 /usr/local/
+
+    #es用户取得该文件夹权限：
+    chown -R es:es /usr/local/elasticsearch1
+
+3.启动ES服务：
+    #切换为es用户：
+    su es
+
+    #进入ES安装文件夹：
+    cd /usr/local/elasticsearch1/bin/
+
+    #启动ES服务：
+    ./elasticsearch 
+
+当启动成功，可以看到类似以下的日志输出。首次启动Elasticsearch，默认会启用安全配置功能，启用身份认证和授权，内置超级用户elastic，并生成默认密码，此时要注意保存，否则之后启动不会再显示。
+
+        # 重置默认密码：
+        cd /usr/local/elasticsearch1/bin/
+        ./elasticsearch-reset-password -u elastic
+
+        # 自定义密码：
+        cd /usr/local/elasticsearch1/bin/
+        ./elasticsearch-reset-password --username elastic -i
+
+5.连接ES，查询ES服务是否启动成功
+
+# 参数 --cacert指定了证书
+curl --cacert /usr/local/elasticsearch1/config/certs/http_ca.crt -u elastic https://localhost:9200

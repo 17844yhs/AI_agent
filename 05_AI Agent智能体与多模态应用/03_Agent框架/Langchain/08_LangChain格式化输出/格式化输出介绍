@@ -1,0 +1,42 @@
+学习目标
+    了解 输出格式化 的作用
+    了解 输出格式化 的使用方式
+
+一.介绍
+在 LangChain 中，输出格式化（Output Parsing）是关键功能之一，用于将大语言模型（LLM）的原始输出（通常是自由格式的文本）解析为结构化的数据格式，如 JSON、字典或自定义对象。这不仅便于后续处理，还能提高输出的可读性和一致性。
+
+核心价值：
+    确保格式一致性：强制LLM按照预定格式输出
+    提升数据可用性：将文本转换为程序可操作的对象
+    降低错误率：通过验证机制减少格式错误
+    简化下游处理：为后续流程提供标准化的数据结构
+
+举例: 
+假设你让 LLM 回答：“请提取用户姓名、年龄和兴趣爱好。” 模型可能返回： “我叫李明，今年28岁，喜欢爬山和摄影。” 这种自由文本难以直接用于程序逻辑。
+而通过 PydanticOutputParser，我们可以强制模型输出：
+{"name": "李明", "age": 28, "hobbies": ["爬山", "摄影"]}
+
+
+
+二.输出解析器的分类
+解析器类型	主要优势	适用场景	性能考虑	学习曲线
+PydanticOutputParser	类型安全，验证严格，IDE支持好	生产环境，复杂数据结构，需要验证	中等，验证开销	中等
+JsonOutputParser	灵活，兼容性好，流式支持	Web API，前后端交互，动态结构	较高，解析快	简单
+XMLOutputParser	层级结构清晰，兼容旧系统	企业集成，文档处理，配置管理	中等，标签解析	中等
+CommaSeparatedListOutputParser	简单高效，内存占用小	标签提取，简单列表，关键词	很高	简单
+StructuredOutputParser	完全自定义，灵活性最高	特殊格式需求，原型开发	取决于复杂度	较高
+
+选择建议：
+    新项目开发：优先考虑 PydanticOutputParser 或 JsonOutputParser
+    企业集成：考虑 XMLOutputParser 或 StructuredOutputParser
+    简单任务：使用 CommaSeparatedListOutputParser
+    流式需求：选择 JsonOutputParser 或支持流式的解析器
+    验证需求强：首选 PydanticOutputParser
+
+常见问题:
+    模型仍可能不遵守格式 → 可结合 retry 机制或使用 StructuredTool + OpenAIFunctionCalling
+
+    中文模型对英文字段名可能混淆 → 建议字段描述用中文
+
+    流式输出时需注意解析器是否支持（如 JsonOutputParser 支持，但 Pydantic 在流式中需额外处理）
+

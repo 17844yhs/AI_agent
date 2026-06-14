@@ -1,0 +1,9 @@
+Tensor的形状描述了其在每个维度上的元素数量。例如，一个形状为(2, 3, 4)的Tensor表示它有2个三维数组，每个三维数组有4个元素。
+
+常用方法
+tensor.shape与tensor.size() 都返回一个元组，表示Tensor的形状
+
+torch.reshape()与torch.view() 改变tensor的形状
+
+可以处理非连续的tensor，
+tensor必须是连续的，如果tensor不连续会报错

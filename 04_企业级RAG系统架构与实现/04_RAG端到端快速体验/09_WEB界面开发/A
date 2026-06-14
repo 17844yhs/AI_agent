@@ -1,0 +1,16 @@
+用Streamlit搭建简易前端
+https://streamlit.io/
+
+一.学习目标
+    启动简易Web界面并与后端Pipeline对接
+    设计基础输入/输出组件展示问答结果
+
+二.步骤流程
+    创建前端脚本（如 app.py）
+
+    安装模块
+        uv pip install streamlit==1.52.2
+        
+    添加输入、按钮、输出区域
+
+    调用后端Pipeline并展示回答与检索片段

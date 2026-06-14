@@ -1,0 +1,3 @@
+张量在内存默认是按维度顺序连续存储
+    torch.is_contiguous() 判断张量是否连续存储
+    torch.contiguous() 返回内存连续的新张量（若已连续则返回自身）

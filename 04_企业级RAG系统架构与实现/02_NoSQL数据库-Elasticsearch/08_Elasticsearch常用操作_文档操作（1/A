@@ -1,0 +1,12 @@
+一·新增/修改文档
+POST /索引/_doc/[id值]
+{
+    "field名":field值
+}
+注：id值不写时自动生成文档id，id和已有id重复时修改文档
+
+二.根据id查询文档
+GET /索引/_doc/id值
+
+三.删除文档
+DELETE /索引/_doc/id值

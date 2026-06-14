@@ -1,0 +1,75 @@
+Elasticsearch提供了全面的文档搜索方式，在学习前我们添加一些文档数据
+
+PUT /students
+{
+  "mappings":{
+    "properties":{
+      "id": {
+            "type": "integer",
+        "index": true
+       },
+         "name": {
+            "type": "text",
+            "store": true,
+        "index": true,
+            "analyzer": "ik_smart"
+         },
+      "info": {
+            "type": "text",
+            "store": true,
+        "index": true,
+            "analyzer": "ik_smart"
+         }
+     }
+   }
+}
+
+POST /students/_doc/
+{
+ "id":1,
+ "name":"百战程序员",
+ "info":"I love baizhan"
+}
+
+POST /students/_doc/
+{
+ "id":2,
+ "name":"美羊羊",
+ "info":"美羊羊是羊村最漂亮的人"
+}
+
+POST /students/_doc/
+{
+ "id":3,
+ "name":"懒羊羊",
+ "info":"懒羊羊的成绩不是很好"
+}
+
+POST /students/_doc/
+{
+ "id":4,
+ "name":"小灰灰",
+ "info":"小灰灰的年纪比较小"
+}
+
+POST /students/_doc/
+{
+ "id":5,
+ "name":"沸羊羊",
+ "info":"沸羊羊喜欢美羊羊"
+}
+
+POST /students/_doc/
+{
+ "id":6,
+ "name":"灰太狼",
+ "info":"灰太狼是小灰灰的父亲，每次都会说我一定会回来的"
+}
+
+文档搜索
+GET /索引/_search
+{
+    "query":{
+    搜索方式:搜索参数
+   }
+}

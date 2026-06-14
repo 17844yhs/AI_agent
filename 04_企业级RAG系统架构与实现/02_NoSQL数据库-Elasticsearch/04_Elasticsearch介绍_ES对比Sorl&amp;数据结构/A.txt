@@ -1,0 +1,7 @@
+Solr也是基于Lucene的一款全文搜索引擎，下面是他们的对比。
+    Solr利用Zookeeper进行分布式管理，而Elasticsearch自身带有分布式协调管理功能;
+    Solr支持更多格式的数据，而Elasticsearch仅支持json文件格式；
+    Solr官方提供的功能更多，而Elasticsearch本身更注重于核心功能，高级功能多由第三方插件提供；
+    Solr在传统的搜索应用中表现好于Elasticsearch，但在处理实时搜索应用时效率明显低于Elasticsearch。
+    
+目前Elasticsearch的市场占有率越来越高，Spring从2020年起也已经停止Spring Data Solr的维护，更多的公司使用Elasticsearch作为搜索引擎。

@@ -1,0 +1,29 @@
+一.根据id批量查询文档
+GET /索引/_mget
+{
+  "docs":[
+     {"_id":id值},
+     {"_id":id值}
+   ] 
+}
+
+二.查询所有文档
+GET /索引/_search
+{
+   "query": {
+     "match_all": {}
+   }
+}
+
+三.修改文档部分字段
+POST /索引/_update/id值/
+{ 
+  "doc":{ 
+    域名:值
+    } 
+}
+
+注：
+Elasticsearch执行删除操作时，ES先标记文档为deleted状态，而不是直接物理删除。当ES存储空间不足或工作空闲时，才会执行物理删除操作。
+
+Elasticsearch执行修改操作时，ES不会真的修改Document中的数据，而是标记ES中原有的文档为deleted状态，再创建一个新的文档来存储数据。

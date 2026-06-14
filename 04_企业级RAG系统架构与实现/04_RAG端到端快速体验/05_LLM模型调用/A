@@ -1,0 +1,20 @@
+智普：https://bigmodel.cn/
+通义：https://bailian.console.aliyun.com/
+
+一.学习目标
+  调用LLM API（OpenAI/本地）进行回答
+  设计Prompt模板并注入检索上下文
+  控制生成长度与格式
+
+二.核心知识点
+  Prompt模板：指令 + 上下文 + 用户问题
+  上下文拼接：去重、截断、格式化
+  响应控制：max_tokens / temperature
+
+三.步骤流程
+  1.安装模块
+    uv add openai==2.14.0
+  2.将Top-K片段拼接成上下文字符串
+  3.构造Prompt（含指令与问答格式）
+  4.调用LLM API并返回生成结果
+

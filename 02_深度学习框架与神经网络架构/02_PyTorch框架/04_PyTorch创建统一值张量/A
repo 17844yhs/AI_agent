@@ -1,0 +1,12 @@
+张量创建方法
+    torch.ones(size,device=None)：创建一个指定形状 size 的全 1 张量
+
+    torch.ones_like(input,device=None)： 创建一个与给定的 input 张量形状相同，元素为 1 的张量
+
+    torch.zeros(size,device=None)：创建一个指定形状 size 的全 0 张量
+
+    torch.zeros_like(input,device=None)： 创建一个与给定的 input 张量形状相同，元素为 0 的张量
+
+    torch.full(size,fill_value,device=None)：创建一个指定形状 size，元素值都为 fill_value 的张量
+
+    torch.full_like(input,fill_value,device=None)： 创建一个与给定的 input 张量形状相同，元素值都为 fill_value 的张量

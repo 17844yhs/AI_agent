@@ -1,0 +1,25 @@
+一.查看数据类型
+每个 PyTorch 张量都有一个 .dtype 属性，它返回一个 torch.dtype 对象，表示张量的数据类型
+
+常用数据类型：
+    torch.float32 或 torch.float： 32 位浮点数 (默认)
+    torch.float64 或 torch.double：64 位浮点数
+    torch.float16 或 torch.half： 16 位浮点数（半精度）
+    torch.int32 或 torch.int： 32 位整数
+    torch.int64 或 torch.long： 64 位整数
+    torch.int16 或 torch.short： 16 位整数
+    torch.int8： 8 位整数
+    torch.uint8： 8 位无符号整数
+    torch.bool：布尔值
+
+二.数据类型转换
+    使用 .to(dtype) 方法： tensor.to(dtype) 方法可以将张量转换为指定的数据类型。如果仅仅是类型转换，可以不需要指定设备。
+    使用 .type(dtype) 方法： tensor.type(dtype) 方法和.to(dtype)方法功能类似，都能将张量转换为指定数据类型。
+    使用 tensor.type_as(other_tensor) 方法： 将当前张量的数据类型与传入的张量的数据类型保持一致。
+    使用 data.type() 方法： 将当前张量的数据类型转成与type类型。
+
+注意:
+    精度损失： 从高精度类型（如 float64）转换为低精度类型（如 float32 或 int32）可能会导致精度损失。
+    数值溢出： 从浮点数类型转换为整数类型时，可能会发生数值溢出。
+    内存管理： 不同的数据类型占用不同的内存，需要注意内存使用。
+    计算性能： 某些操作在特定的数据类型下可能具有更高的性能 (例如，GPU 上通常使用 float32)。

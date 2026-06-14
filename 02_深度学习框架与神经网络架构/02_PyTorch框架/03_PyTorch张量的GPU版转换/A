@@ -1,0 +1,11 @@
+PyTorch 中张量的存储位置，并不会因为发现可以使用CUDA计算，而自动从CPU 切换到 GPU ！！
+
+如何使用GPU
+    使用 张量.to(device)方法显式地将张量移动到GPU (推荐)
+        cpu
+        cuda
+        
+    指定创建在 GPU上的初始位置
+
+注意:
+如果电脑没有 GPU，即使使用 tensor.to("cuda") 或者 torch.cuda.张量 也不会加速，PyTorch 会默认使用 CPU 来完成相关的计算。

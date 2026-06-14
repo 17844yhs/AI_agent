@@ -1,0 +1,4 @@
+用方法
+    torch.transpose() 与 torch.permute() 用于调整维度顺序，通常用于图像格式转换、序列处理
+        transpose只能交换两个维度
+        permute可以任意重排所有维度
