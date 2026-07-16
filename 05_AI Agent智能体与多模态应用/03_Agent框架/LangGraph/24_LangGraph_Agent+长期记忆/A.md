@@ -24,9 +24,9 @@
 
 ### 两种记忆的职责分工
 
-| 记忆类型 | 职责 | 存储内容 |
-|---------|------|---------|
-| **短期记忆** | 保持当前会话上下文 | 完整对话历史 |
+| 记忆类型           | 职责                 | 存储内容           |
+| ------------------ | -------------------- | ------------------ |
+| **短期记忆** | 保持当前会话上下文   | 完整对话历史       |
 | **长期记忆** | 跨会话持久化关键信息 | 用户画像、偏好设置 |
 
 ---
@@ -66,24 +66,24 @@ memory = MemorySaver()
 @tool
 def save_user_info(user_id: str, info_key: str, info_value: str) -> str:
     """保存用户信息到长期记忆。
-    
+  
     Args:
         user_id: 用户ID
         info_key: 信息类别（如 name/age/city）
         info_value: 信息内容
     """
     namespace = ("users", user_id)
-    
+  
     # 读取已有信息，合并新信息
     existing = store.get(namespace, "profile")
     if existing:
         profile = existing.value
     else:
         profile = {}
-    
+  
     profile[info_key] = info_value
     store.put(namespace, "profile", profile)
-    
+  
     return f"已保存：{info_key} = {info_value}"
 ```
 
@@ -93,21 +93,21 @@ def save_user_info(user_id: str, info_key: str, info_value: str) -> str:
 @tool
 def get_user_info(user_id: str, info_key: str = "") -> str:
     """查询用户信息。
-    
+  
     Args:
         user_id: 用户ID
         info_key: 可选，指定查询某个信息类别。不填则返回全部。
     """
     namespace = ("users", user_id)
     existing = store.get(namespace, "profile")
-    
+  
     if not existing:
         return f"未找到用户 {user_id} 的信息"
-    
+  
     profile = existing.value
     if info_key:
         return profile.get(info_key, f"未找到 {info_key} 信息")
-    
+  
     return json.dumps(profile, ensure_ascii=False)
 ```
 
@@ -256,12 +256,12 @@ AI：你作为25岁的Python开发者，建议可以关注以下方向...
 
 ## ⚠️ 注意事项
 
-| 特性 | 说明 |
-|------|------|
-| **短期记忆** | `MemorySaver` - 内存存储，重启丢失 |
-| **长期记忆** | `InMemoryStore` - 内存存储，重启丢失 |
-| **生产环境** | 使用 `PostgresSaver` + `PostgresStore` |
-| **用户隔离** | 通过 `namespace` 实现多用户数据隔离 |
+| 特性               | 说明                                      |
+| ------------------ | ----------------------------------------- |
+| **短期记忆** | `MemorySaver` - 内存存储，重启丢失      |
+| **长期记忆** | `InMemoryStore` - 内存存储，重启丢失    |
+| **生产环境** | 使用`PostgresSaver` + `PostgresStore` |
+| **用户隔离** | 通过`namespace` 实现多用户数据隔离      |
 
 ---
 

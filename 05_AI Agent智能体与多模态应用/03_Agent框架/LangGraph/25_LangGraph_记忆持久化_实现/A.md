@@ -16,10 +16,10 @@
 
 ### 开发 vs 生产对比
 
-| 环境 | Checkpointer | Store | 数据存储 | 需要初始化 |
-|------|-------------|-------|---------|-----------|
-| **开发** | MemorySaver | InMemoryStore | 内存（重启丢失） | ❌ 不需要 |
-| **生产** | PostgresSaver | PostgresStore | PostgreSQL（持久化） | ✅ 需要 `setup()` |
+| 环境           | Checkpointer  | Store         | 数据存储             | 需要初始化         |
+| -------------- | ------------- | ------------- | -------------------- | ------------------ |
+| **开发** | MemorySaver   | InMemoryStore | 内存（重启丢失）     | ❌ 不需要          |
+| **生产** | PostgresSaver | PostgresStore | PostgreSQL（持久化） | ✅ 需要`setup()` |
 
 ---
 
@@ -124,7 +124,7 @@ DB_URI = os.getenv("DATABASE_URI", "postgresql://langgraph:langgraph123@localhos
 # ← 改动2：用 with 创建 + setup()
 with PostgresSaver.from_conn_string(DB_URI) as memory, \
      PostgresStore.from_conn_string(DB_URI) as store:
-    
+  
     memory.setup()  # ← 必须调用！
     store.setup()   # ← 必须调用！
 
@@ -253,13 +253,13 @@ memory = MemorySaver()                 →  memory = PostgresSaver.from_conn_str
 
 ## ⚠️ 注意事项
 
-| 项目 | 说明 |
-|------|------|
-| **依赖包** | 需安装 `langgraph-checkpoint-postgres` 和 `psycopg`（或 `psycopg2`） |
-| **数据库服务** | 确保 PostgreSQL 服务已启动并可访问 |
-| **setup() 调用** | 必须在首次使用前调用，否则会报错找不到表 |
-| **连接管理** | 推荐使用 `with` 语句自动管理连接生命周期 |
-| **环境变量** | 建议使用 `.env` 文件管理数据库连接字符串 |
+| 项目                   | 说明                                                                      |
+| ---------------------- | ------------------------------------------------------------------------- |
+| **依赖包**       | 需安装`langgraph-checkpoint-postgres` 和 `psycopg`（或 `psycopg2`） |
+| **数据库服务**   | 确保 PostgreSQL 服务已启动并可访问                                        |
+| **setup() 调用** | 必须在首次使用前调用，否则会报错找不到表                                  |
+| **连接管理**     | 推荐使用`with` 语句自动管理连接生命周期                                 |
+| **环境变量**     | 建议使用`.env` 文件管理数据库连接字符串                                 |
 
 ---
 
