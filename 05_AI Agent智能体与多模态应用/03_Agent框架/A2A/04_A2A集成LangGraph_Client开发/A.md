@@ -6,8 +6,8 @@
 
 ## 学习目标
 
-- [x] 掌握在 LangGraph Agent 中集成 A2A Client
-- [x] 实现完整的用户请求 → Agent 判断 → A2A 委托 → 返回结果流程
+- [X] 掌握在 LangGraph Agent 中集成 A2A Client
+- [X] 实现完整的用户请求 → Agent 判断 → A2A 委托 → 返回结果流程
 
 ---
 
