@@ -14,8 +14,8 @@
 import os
 import json
 from dotenv import load_dotenv
-from langchain.tools import tool
-from langchain.agents import create_agent
+from langchain_core.tools import tool
+from langchain_core.agents import create_agent
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import HumanMessage
 

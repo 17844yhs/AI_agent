@@ -56,9 +56,9 @@ RAG Agent = 先思考"这个问题需要查书吗？"，需要才去查，查到
 ```python
 import os
 from dotenv import load_dotenv
-from langchain.tools import tool
+from langchain_core.tools import tool
 from langchain_openai import ChatOpenAI
-from langchain.agents import create_agent
+from langchain_core.agents import create_agent
 from langchain_core.messages import HumanMessage
 
 load_dotenv()

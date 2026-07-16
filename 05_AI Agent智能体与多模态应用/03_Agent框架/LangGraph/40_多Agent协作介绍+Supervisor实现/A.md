@@ -88,11 +88,11 @@ import os
 from dotenv import load_dotenv
 from typing import Annotated, Sequence, TypedDict
 from operator import add
-from langchain.tools import tool
+from langchain_core.tools import tool
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import HumanMessage, AIMessage
 from langgraph.graph import StateGraph, END, START
-from langchain.agents import create_agent
+from langchain_core.agents import create_agent
 
 load_dotenv()
 

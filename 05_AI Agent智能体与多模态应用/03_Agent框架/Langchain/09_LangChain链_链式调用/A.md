@@ -23,6 +23,7 @@ response = llm.invoke("请总结这篇文档:" + document_text)
 ```
 
 **问题:**
+
 - 提示工程简单
 - 无上下文管理
 - 难以扩展
@@ -36,16 +37,16 @@ response = llm.invoke("请总结这篇文档:" + document_text)
 def manual_chain(question):
     # 1. 检索相关文档
     docs = retriever.invoke(question)
-    
+  
     # 2. 构建复杂提示
     prompt = f"""基于以下上下文回答问题:
     上下文:{docs}
     问题:{question}
     要求:如果上下文不包含答案,请明确说"我不知道"。"""
-    
+  
     # 3. 调用模型
     response = llm.invoke(prompt)
-    
+  
     # 4. 后处理
     if "我不知道" in response:
         return "抱歉,我无法回答这个问题。"
@@ -53,6 +54,7 @@ def manual_chain(question):
 ```
 
 **问题:**
+
 - 代码重复
 - 难以测试
 - 逻辑分散

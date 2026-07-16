@@ -133,7 +133,7 @@ except ValidationError as e:
 ### 🦜 LangChain工具装饰器
 
 ```python
-from langchain.tools import tool
+from langchain_core.tools import tool
 from langchain_core.tools import ToolException
 
 @tool

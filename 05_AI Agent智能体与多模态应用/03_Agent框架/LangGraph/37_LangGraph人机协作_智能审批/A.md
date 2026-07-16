@@ -35,7 +35,7 @@ Agent 同样遵循此原则，根据操作风险等级决定是否需要人类�
 import os
 import json
 from dotenv import load_dotenv
-from langchain.tools import tool
+from langchain_core.tools import tool
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import HumanMessage
 from langgraph.checkpoint.memory import MemorySaver

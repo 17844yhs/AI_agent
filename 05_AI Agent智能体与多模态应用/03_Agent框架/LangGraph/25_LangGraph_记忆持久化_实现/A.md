@@ -104,9 +104,9 @@ print("数据库初始化完成！")
 import os
 import json
 from dotenv import load_dotenv
-from langchain.tools import tool
+from langchain_core.tools import tool
 from langchain_openai import ChatOpenAI
-from langchain.agents import create_agent
+from langchain_core.agents import create_agent
 # ← 改动1：换 import
 from langgraph.checkpoint.postgres import PostgresSaver  # 原来是 MemorySaver
 from langgraph.store.postgres import PostgresStore       # 原来是 InMemoryStore

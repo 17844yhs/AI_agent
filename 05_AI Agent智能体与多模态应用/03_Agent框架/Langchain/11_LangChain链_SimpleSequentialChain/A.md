@@ -9,11 +9,11 @@
 
 ## ✨ 特点
 
-| 特性 | 说明 |
-|------|------|
-| **线性流程** | 子链按顺序执行，一步接一步 |
+| 特性                    | 说明                                                                   |
+| ----------------------- | ---------------------------------------------------------------------- |
+| **线性流程**      | 子链按顺序执行，一步接一步                                             |
 | **单一输入/输出** | 整个链接收一个输入，产生一个输出。中间过程对外透明（只能看到最终结果） |
-| **自动传递** | 前一个链的输出会自动作为后一个链的输入，开发者无需手动处理数据传递 |
+| **自动传递**      | 前一个链的输出会自动作为后一个链的输入，开发者无需手动处理数据传递     |
 
 ---
 
@@ -35,8 +35,8 @@
 
 ```python
 from langchain_openai import ChatOpenAI
-from langchain.chains import LLMChain, SimpleSequentialChain
-from langchain.prompts import ChatPromptTemplate
+from langchain_core.chains import LLMChain, SimpleSequentialChain
+from langchain_core.prompts import ChatPromptTemplate
 
 # 初始化模型
 llm = ChatOpenAI(temperature=0.7, model="gpt-3.5-turbo")
@@ -84,6 +84,7 @@ print(final_summary)
 ### 痛点：缺乏灵活性
 
 突发需求场景：
+
 - 🔸 有时只需要 `chain1`
 - 🔸 有时需要 `chain1 → chain2`
 - 🔸 有时需要 `chain2 → chain1`

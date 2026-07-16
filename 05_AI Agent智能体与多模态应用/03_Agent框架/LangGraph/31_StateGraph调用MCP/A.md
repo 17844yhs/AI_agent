@@ -40,7 +40,7 @@ from langchain_mcp_adapters.tools import load_mcp_tools
 from langchain_openai import ChatOpenAI
 from langgraph.graph import StateGraph, MessagesState, START, END
 from langgraph.prebuilt import ToolNode, tools_condition
-from langchain.tools import tool
+from langchain_core.tools import tool
 from langchain_core.messages import HumanMessage
 
 load_dotenv()

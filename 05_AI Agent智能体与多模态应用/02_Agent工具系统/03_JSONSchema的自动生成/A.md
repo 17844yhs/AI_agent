@@ -149,7 +149,7 @@ schema = UserProfile.model_json_schema()
 ### 🔗 LangChain集成
 
 ```python
-from langchain.tools import tool
+from langchain_core.tools import tool
 from pydantic import BaseModel, Field
 
 class CalculatorInput(BaseModel):

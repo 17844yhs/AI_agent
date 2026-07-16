@@ -39,9 +39,9 @@
 import os
 import json
 from dotenv import load_dotenv
-from langchain.tools import tool
+from langchain_core.tools import tool
 from langchain_openai import ChatOpenAI
-from langchain.agents import create_agent
+from langchain_core.agents import create_agent
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.store.memory import InMemoryStore
 from langchain_core.messages import HumanMessage

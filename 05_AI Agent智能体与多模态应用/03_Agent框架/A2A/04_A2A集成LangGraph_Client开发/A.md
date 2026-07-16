@@ -45,7 +45,7 @@ from langchain_openai import ChatOpenAI
 from langchain_core.messages import HumanMessage, SystemMessage
 from langgraph.graph import StateGraph, MessagesState, START, END
 from langgraph.prebuilt import ToolNode, tools_condition
-from langchain.tools import tool
+from langchain_core.tools import tool
 
 # A2A Client 相关
 from a2a.client import A2ACardResolver, ClientFactory, ClientConfig

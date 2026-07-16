@@ -60,7 +60,7 @@ os.environ["DASHSCOPE_API_KEY"] = tongyi_key
 
 from langchain_community.chat_models import ChatTongyi
 from langchain_mcp_adapters.client import MultiServerMCPClient
-from langchain.agents import create_agent
+from langchain_core.agents import create_agent
 from langchain_core.messages import HumanMessage
 
 

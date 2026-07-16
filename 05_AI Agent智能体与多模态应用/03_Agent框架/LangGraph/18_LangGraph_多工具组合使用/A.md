@@ -23,7 +23,7 @@
 import os
 import json
 from dotenv import load_dotenv
-from langchain.tools import tool
+from langchain_core.tools import tool
 from langchain_openai import ChatOpenAI
 from langgraph.prebuilt import create_agent
 
