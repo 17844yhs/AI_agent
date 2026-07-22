@@ -6,7 +6,7 @@
 
 ## 学习目标
 
-- [x] 掌握将 LangGraph Agent 包装成 A2A Server
+- [X] 掌握将 LangGraph Agent 包装成 A2A Server
 
 ---
 

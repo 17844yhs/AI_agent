@@ -6,8 +6,8 @@
 
 ## 学习目标
 
-- [x] 掌握在 LangGraph Agent 中集成 A2A Client
-- [x] 实现完整的用户请求 → Agent 判断 → A2A 委托 → 返回结果流程
+- [X] 掌握在 LangGraph Agent 中集成 A2A Client
+- [X] 实现完整的用户请求 → Agent 判断 → A2A 委托 → 返回结果流程
 
 ---
 
@@ -45,7 +45,7 @@ from langchain_openai import ChatOpenAI
 from langchain_core.messages import HumanMessage, SystemMessage
 from langgraph.graph import StateGraph, MessagesState, START, END
 from langgraph.prebuilt import ToolNode, tools_condition
-from langchain.tools import tool
+from langchain_core.tools import tool
 
 # A2A Client 相关
 from a2a.client import A2ACardResolver, ClientFactory, ClientConfig

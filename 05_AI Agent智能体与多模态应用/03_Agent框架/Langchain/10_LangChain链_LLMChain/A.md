@@ -37,7 +37,7 @@
 
 ```python
 from langchain_core.prompts import ChatPromptTemplate
-from langchain.chains import LLMChain
+from langchain_core.chains import LLMChain
 
 prompt = ChatPromptTemplate.from_messages(
     [

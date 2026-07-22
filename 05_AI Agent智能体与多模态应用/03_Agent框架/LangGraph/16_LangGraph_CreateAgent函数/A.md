@@ -14,10 +14,10 @@
 
 ## 🚗 生活化比喻：买车
 
-| 方式 | 类比 | 特点 |
-|------|------|------|
-| **手动构建** | 自己买零件组装一辆车（发动机、方向盘、轮胎...） | 灵活但繁琐 ❌ |
-| **create_agent** | 直接从4S店提一辆现成的车 | 省事高效 ✅ |
+| 方式                   | 类比                                            | 特点          |
+| ---------------------- | ----------------------------------------------- | ------------- |
+| **手动构建**     | 自己买零件组装一辆车（发动机、方向盘、轮胎...） | 灵活但繁琐 ❌ |
+| **create_agent** | 直接从4S店提一辆现成的车                        | 省事高效 ✅   |
 
 **功能一样，但省去了组装的麻烦！**
 
@@ -42,9 +42,9 @@
 ```python
 import os
 from dotenv import load_dotenv
-from langchain.tools import tool
+from langchain_core.tools import tool
 from langchain_openai import ChatOpenAI
-from langgraph.prebuilt import create_agent
+from langchain_core.agents import create_agent
 from langchain_core.messages import HumanMessage
 
 load_dotenv()
@@ -116,13 +116,13 @@ AI：你好！我是一个AI助手，可以帮你搜索信息、计算和查询�
 
 ## 📋 手动构建 vs create_agent
 
-| 对比项 | 手动构建 | create_agent |
-|--------|---------|--------------|
-| **代码量** | ~30行 | ✅ ~3行 |
-| **灵活性** | ✅ 完全自定义 | ⚠️ 使用标准 ReAct 模式 |
-| **适用场景** | 需要定制 Agent 行为 | ✅ 标准 Agent 快速搭建 |
-| **内部结构** | ✅ 可控 | ⚠️ 自动处理（LLM + ToolNode + 循环） |
-| **开发速度** | ⚠️ 较慢 | ✅ 快速 |
+| 对比项             | 手动构建            | create_agent                           |
+| ------------------ | ------------------- | -------------------------------------- |
+| **代码量**   | ~30行               | ✅ ~3行                                |
+| **灵活性**   | ✅ 完全自定义       | ⚠️ 使用标准 ReAct 模式               |
+| **适用场景** | 需要定制 Agent 行为 | ✅ 标准 Agent 快速搭建                 |
+| **内部结构** | ✅ 可控             | ⚠️ 自动处理（LLM + ToolNode + 循环） |
+| **开发速度** | ⚠️ 较慢           | ✅ 快速                                |
 
 ---
 
@@ -168,6 +168,7 @@ app = create_agent(llm, [search, calculator, get_weather])
 ```
 
 **适用场景**：
+
 - 90% 的标准 Agent 需求
 - 快速原型开发
 - 不需要特殊定制

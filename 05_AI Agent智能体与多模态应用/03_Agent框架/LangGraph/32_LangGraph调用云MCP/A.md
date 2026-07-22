@@ -60,13 +60,13 @@ os.environ["DASHSCOPE_API_KEY"] = tongyi_key
 
 from langchain_community.chat_models import ChatTongyi
 from langchain_mcp_adapters.client import MultiServerMCPClient
-from langchain.agents import create_agent
+from langchain_core.agents import create_agent
 from langchain_core.messages import HumanMessage
 
 
 async def main():
     llm = ChatTongyi()
-    
+  
     # 连接云端 MCP Server
     client = MultiServerMCPClient(
         {
@@ -160,6 +160,7 @@ AI：以下是好评率最高的男生爱看的玄幻小说推荐：
 ```
 
 **关键点：**
+
 - 🔑 **认证信息**：大多数云端 MCP 需要 API Key 或 Token
 - 🌐 **HTTP 模式**：云端服务必须使用 HTTP/HTTPS
 - 📝 **Headers**：根据服务商要求配置请求头
@@ -168,14 +169,14 @@ AI：以下是好评率最高的男生爱看的玄幻小说推荐：
 
 ## ⚖️ 自建 vs 云端对比
 
-| 特性 | 自建 MCP | 云端 MCP |
-|------|---------|---------|
-| **开发成本** | 高（需编写代码） | 低（直接使用） |
-| **部署维护** | 需自行维护服务器 | 无需维护 |
-| **自定义程度** | 完全可控 | 受限于服务商 |
-| **响应速度** | 取决于本地网络 | 取决于云服务 |
-| **适用场景** | 核心业务逻辑 | 通用能力集成 |
-| **成本** | 服务器成本 | API 调用费用 |
+| 特性                 | 自建 MCP         | 云端 MCP       |
+| -------------------- | ---------------- | -------------- |
+| **开发成本**   | 高（需编写代码） | 低（直接使用） |
+| **部署维护**   | 需自行维护服务器 | 无需维护       |
+| **自定义程度** | 完全可控         | 受限于服务商   |
+| **响应速度**   | 取决于本地网络   | 取决于云服务   |
+| **适用场景**   | 核心业务逻辑     | 通用能力集成   |
+| **成本**       | 服务器成本       | API 调用费用   |
 
 ---
 

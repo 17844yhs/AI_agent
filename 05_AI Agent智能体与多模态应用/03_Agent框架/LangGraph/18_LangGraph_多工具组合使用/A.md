@@ -9,6 +9,7 @@
 ## 📖 介绍
 
 真实业务中，Agent 通常需要配备**多个工具**。LLM 会根据问题自动选择：
+
 - ✅ 调用哪些工具
 - ✅ 以什么顺序调用
 - ✅ 是否需要多次调用
@@ -23,7 +24,7 @@
 import os
 import json
 from dotenv import load_dotenv
-from langchain.tools import tool
+from langchain_core.tools import tool
 from langchain_openai import ChatOpenAI
 from langgraph.prebuilt import create_agent
 
@@ -64,16 +65,16 @@ def transfer(from_user: str, to_user: str, amount: float) -> str:
     """转账操作，输入转出人、转入人和金额。"""
     from_data = user_database.get(from_user)
     to_data = user_database.get(to_user)
-    
+  
     if not from_data or not to_data:
         return "转账失败：用户不存在"
-    
+  
     if from_data["balance"] < amount:
         return f"转账失败：{from_user}余额不足（当前{from_data['balance']}元）"
-    
+  
     from_data["balance"] -= amount
     to_data["balance"] += amount
-    
+  
     return f"转账成功！{from_user}向{to_user}转账{amount}元"
 
 @tool
@@ -176,10 +177,10 @@ LLM 分析：需要天气信息 + 用户所在城市
 
 ## 📋 工具调用模式总结
 
-| 模式 | 特点 | 示例 |
-|------|------|------|
-| **单工具** | 只需调用一个工具 | 查询余额、查询天气 |
-| **顺序调用** | 先查后改，有依赖关系 | 查余额 → 转账 |
+| 模式               | 特点                     | 示例                |
+| ------------------ | ------------------------ | ------------------- |
+| **单工具**   | 只需调用一个工具         | 查询余额、查询天气  |
+| **顺序调用** | 先查后改，有依赖关系     | 查余额 → 转账      |
 | **并行调用** | 多个独立信息，可同时获取 | 查用户城市 + 查天气 |
 
 ---

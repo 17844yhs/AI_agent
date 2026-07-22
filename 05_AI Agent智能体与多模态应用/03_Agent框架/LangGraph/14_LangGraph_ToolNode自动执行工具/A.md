@@ -15,11 +15,11 @@ LLM 输出了 `tool_calls` 指令，但工具并没有真正执行。**ToolNode*
 
 ## 🏭 生活化比喻：自动化工厂
 
-| 角色 | 对应组件 | 职责 |
-|------|---------|------|
-| **设计师** | LLM | 画好图纸（`tool_calls`） |
-| **机器人手臂** | ToolNode | 按图纸自动加工 |
-| **产品** | ToolMessage | 加工完成的产品，送回给设计师检查 |
+| 角色                 | 对应组件    | 职责                             |
+| -------------------- | ----------- | -------------------------------- |
+| **设计师**     | LLM         | 画好图纸（`tool_calls`）       |
+| **机器人手臂** | ToolNode    | 按图纸自动加工                   |
+| **产品**       | ToolMessage | 加工完成的产品，送回给设计师检查 |
 
 ---
 
@@ -32,7 +32,7 @@ import os
 from dotenv import load_dotenv
 from typing import Annotated, Sequence, TypedDict
 from operator import add
-from langchain.tools import tool
+from langchain_core.tools import tool
 from langchain_openai import ChatOpenAI
 from langgraph.graph import StateGraph, END
 from langgraph.prebuilt import ToolNode
@@ -133,19 +133,19 @@ def manual_tool_node(state: AgentState):
     """手动处理工具调用"""
     last_message = state["messages"][-1]
     tool_calls = last_message.tool_calls
-    
+  
     if not tool_calls:
         return {"messages": []}
-    
+  
     tool_messages = []
-    
+  
     for tool_call in tool_calls:
         tool_name = tool_call["name"]
         tool_args = tool_call["args"]
         tool_call_id = tool_call["id"]
-        
+      
         print(f"🔧 手动执行工具: {tool_name}({tool_args})")
-        
+      
         # 根据工具名称调用对应函数
         if tool_name in tools_dict:
             try:
@@ -156,14 +156,14 @@ def manual_tool_node(state: AgentState):
                 content = f"工具执行错误: {e}"
         else:
             content = f"错误：未找到工具 '{tool_name}'"
-        
+      
         # 创建工具响应消息
         tool_message = ToolMessage(
             content=content,
             tool_call_id=tool_call_id
         )
         tool_messages.append(tool_message)
-    
+  
     return {"messages": tool_messages}
 
 # 使用手动工具节点
@@ -257,13 +257,13 @@ messages: Sequence  # 导致对话历史丢失！
 
 ## 🔧 ToolNode vs 手动实现对比
 
-| 特性 | ToolNode | 手动实现 |
-|------|----------|---------|
+| 特性               | ToolNode          | 手动实现              |
+| ------------------ | ----------------- | --------------------- |
 | **开发速度** | ✅ 快速，一行代码 | ⚠️ 需要编写完整逻辑 |
-| **灵活性** | ⚠️ 固定行为 | ✅ 完全自定义 |
-| **错误处理** | ✅ 内置异常处理 | ⚠️ 需手动处理 |
-| **日志调试** | ⚠️ 黑盒 | ✅ 可添加详细日志 |
-| **适用场景** | 标准 Agent | 需要特殊逻辑的场景 |
+| **灵活性**   | ⚠️ 固定行为     | ✅ 完全自定义         |
+| **错误处理** | ✅ 内置异常处理   | ⚠️ 需手动处理       |
+| **日志调试** | ⚠️ 黑盒         | ✅ 可添加详细日志     |
+| **适用场景** | 标准 Agent        | 需要特殊逻辑的场景    |
 
 ### 💡 选择建议
 

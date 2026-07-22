@@ -61,13 +61,13 @@ os.environ["DASHSCOPE_API_KEY"] = tongyi_key
 
 from langchain_community.chat_models import ChatTongyi
 from langchain_mcp_adapters.client import MultiServerMCPClient
-from langchain.agents import create_agent
+from langchain_core.agents import create_agent
 from langchain_core.messages import HumanMessage
 
 
 async def main():
     llm = ChatTongyi()
-    
+  
     # 连接多个 MCP Server
     client = MultiServerMCPClient(
         {
@@ -153,6 +153,7 @@ AI：北京今天晴天，15-25度，空气质量良好。
 ```
 
 **特点：**
+
 - 📍 Client 自动启动 Server 子进程
 - 🔄 适合本地开发
 - 🚫 不支持远程调用
@@ -167,6 +168,7 @@ AI：北京今天晴天，15-25度，空气质量良好。
 ```
 
 **特点：**
+
 - 🌐 通过网络连接已运行的 Server
 - ✅ 适合生产环境
 - 🔄 支持远程调用
@@ -175,12 +177,12 @@ AI：北京今天晴天，15-25度，空气质量良好。
 
 ## ⚠️ 注意事项
 
-| 场景 | 建议 |
-|------|------|
-| **Web 服务** | 使用 HTTP 模式，让 Server 独立运行 |
-| **本地开发** | 可以使用 stdio 模式，快速测试 |
-| **简单场景** | 直接用 `@tool` 更轻量，不需要 MCP |
-| **多 Server** | 使用 `MultiServerMCPClient` 统一管理 |
+| 场景                | 建议                                  |
+| ------------------- | ------------------------------------- |
+| **Web 服务**  | 使用 HTTP 模式，让 Server 独立运行    |
+| **本地开发**  | 可以使用 stdio 模式，快速测试         |
+| **简单场景**  | 直接用`@tool` 更轻量，不需要 MCP    |
+| **多 Server** | 使用`MultiServerMCPClient` 统一管理 |
 
 ### 重要提示
 

@@ -27,9 +27,9 @@
 ```python
 import os
 from dotenv import load_dotenv
-from langchain.tools import tool
+from langchain_core.tools import tool
 from langchain_openai import ChatOpenAI
-from langchain.agents import create_agent
+from langchain_core.agents import create_agent
 from langgraph.checkpoint.memory import MemorySaver
 from langchain_core.messages import HumanMessage
 
@@ -109,15 +109,15 @@ Checkpointer 保存的完整 State（`messages` 列表）：
 [
     HumanMessage("我叫张三，是一名Python开发者"),
     AIMessage("你好张三！..."),
-    
+  
     HumanMessage("帮我算一下 1000 + 2000"),
     AIMessage("", tool_calls=[calculator("1000+2000")]),  # 工具调用也保存
     ToolMessage("3000"),                                   # 工具结果也保存
     AIMessage("1000 + 2000 = 3000"),
-    
+  
     HumanMessage("刚才的计算结果是多少？"),
     AIMessage("刚才的计算结果是3000。"),
-    
+  
     ...
 ]
 ```
@@ -146,12 +146,12 @@ Checkpointer 保存的完整 State（`messages` 列表）：
 
 ## ⚠️ 注意事项
 
-| 特性 | 说明 |
-|------|------|
-| **保存内容** | 对话历史 + 工具调用 + 工具结果 |
-| **适用场景** | 需要记住工具执行结果的 Agent |
-| **存储位置** | 内存中（程序重启后数据丢失） |
-| **生产环境** | 请使用 `PostgresSaver` 持久化存储 |
+| 特性               | 说明                               |
+| ------------------ | ---------------------------------- |
+| **保存内容** | 对话历史 + 工具调用 + 工具结果     |
+| **适用场景** | 需要记住工具执行结果的 Agent       |
+| **存储位置** | 内存中（程序重启后数据丢失）       |
+| **生产环境** | 请使用`PostgresSaver` 持久化存储 |
 
 ---
 

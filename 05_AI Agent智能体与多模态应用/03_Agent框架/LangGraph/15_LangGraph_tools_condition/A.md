@@ -14,10 +14,10 @@
 
 ## 🗺️ 生活化比喻：导航
 
-| 方式 | 类比 | 特点 |
-|------|------|------|
-| **手写 should_continue** | 自己查地图判断方向 | 灵活但繁琐 ❌ |
-| **tools_condition** | 直接打开 GPS 导航，自动规划路线 | 省事高效 ✅ |
+| 方式                           | 类比                            | 特点          |
+| ------------------------------ | ------------------------------- | ------------- |
+| **手写 should_continue** | 自己查地图判断方向              | 灵活但繁琐 ❌ |
+| **tools_condition**      | 直接打开 GPS 导航，自动规划路线 | 省事高效 ✅   |
 
 **结果一样，但后者省事得多！**
 
@@ -75,7 +75,7 @@ import os
 from dotenv import load_dotenv
 from typing import Annotated, Sequence, TypedDict
 from operator import add
-from langchain.tools import tool
+from langchain_core.tools import tool
 from langchain_openai import ChatOpenAI
 from langgraph.graph import StateGraph, END
 from langgraph.prebuilt import ToolNode, tools_condition
@@ -143,13 +143,13 @@ print(f"回复：{result['messages'][-1].content}")
 
 ## 📋 对比总结
 
-| 特性 | 手写 should_continue | tools_condition |
-|------|---------------------|-----------------|
-| **代码量** | 需要编写函数 | ✅ 一行导入即可 |
-| **可读性** | ⚠️ 需要理解逻辑 | ✅ 语义清晰 |
-| **维护性** | ⚠️ 自定义逻辑需维护 | ✅ 官方维护，稳定 |
-| **灵活性** | ✅ 可添加额外逻辑 | ⚠️ 固定逻辑 |
-| **适用场景** | 需要特殊判断 | 标准 Agent 流程 |
+| 特性               | 手写 should_continue  | tools_condition   |
+| ------------------ | --------------------- | ----------------- |
+| **代码量**   | 需要编写函数          | ✅ 一行导入即可   |
+| **可读性**   | ⚠️ 需要理解逻辑     | ✅ 语义清晰       |
+| **维护性**   | ⚠️ 自定义逻辑需维护 | ✅ 官方维护，稳定 |
+| **灵活性**   | ✅ 可添加额外逻辑     | ⚠️ 固定逻辑     |
+| **适用场景** | 需要特殊判断          | 标准 Agent 流程   |
 
 ---
 
@@ -174,11 +174,11 @@ graph.add_conditional_edges("agent", tools_condition, {
 ```python
 def custom_should_continue(state: AgentState):
     last_message = state["messages"][-1]
-    
+  
     # 额外判断：检查消息长度
     if len(state["messages"]) > 10:
         return END  # 超过10轮对话，强制结束
-    
+  
     # 使用 tools_condition 的标准逻辑
     if hasattr(last_message, "tool_calls") and last_message.tool_calls:
         return "tools"
