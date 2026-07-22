@@ -23,3 +23,6 @@ __pycache__/
 # 大文件 - 安装包等二进制文件不上传 Git
 *.tar.gz
 *.zip
+
+# 技能创建器
+skill-creator-plus-daguan/
